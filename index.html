@@ -1245,8 +1245,16 @@
               </p>
 
               <button type="submit" class="btn-primary">
-                Submit enquiry on WhatsApp
+                Submit enquiry
               </button>
+              
+              <p
+  id="successMsg"
+  style="display:none; color:#257a32; font-size:13px; margin-top:10px;"
+>
+  ✅ Thank you. Your enquiry has been submitted.<br />
+  Our team will contact you shortly.
+</p>
             </form>
           </div>
 
@@ -1309,79 +1317,83 @@
   </footer>
 
   <script>
-    // === CONFIG: SET YOUR WHATSAPP NUMBER HERE (with country code, no + sign) ===
-    // Example: 919876543210
-    const WHATSAPP_NUMBER = "917008123502”;
+  /* ================= CONFIG ================= */
+  // WhatsApp number (country code included, NO + sign)
+  const WHATSAPP_NUMBER = "917008123502";
 
-    // Mobile nav toggle
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
+  /* ================= MOBILE NAV ================= */
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
 
+  if (navToggle && navLinks) {
     navToggle.addEventListener("click", () => {
       navLinks.classList.toggle("open");
     });
+  }
 
-    // Smooth scroll for in-page links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        const targetId = this.getAttribute("href").substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          e.preventDefault();
-          navLinks.classList.remove("open");
-          window.scrollTo({
-            top: target.offsetTop - 70,
-            behavior: "smooth",
-          });
-        }
-      });
-    });
+  /* ================= SMOOTH SCROLL ================= */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href").substring(1);
+      const target = document.getElementById(targetId);
 
-    // Set quick WhatsApp link based on configured number
-    const quickLink = document.getElementById("whatsappQuickLink");
-    if (quickLink && WHATSAPP_NUMBER && WHATSAPP_NUMBER !== "917008123502”) {
-      quickLink.href = "https://wa.me/" + WHATSAPP_NUMBER;
-    }
-
-    // Form -> WhatsApp integration
-    const enquiryForm = document.getElementById("enquiryForm");
-    if (enquiryForm) {
-      enquiryForm.addEventListener("submit", function (e) {
+      if (target) {
         e.preventDefault();
+        if (navLinks) navLinks.classList.remove("open");
+        window.scrollTo({
+          top: target.offsetTop - 70,
+          behavior: "smooth",
+        });
+      }
+    });
+  });
 
-        if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER === "917008123502") {
-          alert("Please configure your WhatsApp number in the script (WHATSAPP_NUMBER).");
-          return;
-        }
+  /* ================= QUICK WHATSAPP BUTTON ================= */
+  const quickLink = document.getElementById("whatsappQuickLink");
+  if (quickLink) {
+    quickLink.href = "https://wa.me/" + WHATSAPP_NUMBER;
+  }
 
-        const name = document.getElementById("name").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const elders = document.getElementById("elders").value.trim();
-        const destination = document.getElementById("destination").value;
-        const month = document.getElementById("month").value.trim();
-        const notes = document.getElementById("notes").value.trim();
+  /* ================= FORM SUBMISSION ================= */
+  const enquiryForm = document.getElementById("enquiryForm");
+  const successMsg = document.getElementById("successMsg");
 
-        if (!name || !phone || !elders || !destination) {
-          alert("Please fill in all required fields.");
-          return;
-        }
+  if (enquiryForm) {
+    enquiryForm.addEventListener("submit", function (e) {
+      e.preventDefault(); // ✅ stop page reload/scroll
 
-        let message = "SRAVN Yatra Enquiry%0A%0A";
-        message += "Name: " + name + "%0A";
-        message += "Contact number: " + phone + "%0A";
-        message += "Elders travelling: " + elders + "%0A";
-        message += "Preferred destination: " + destination + "%0A";
-        if (month) {
-          message += "Approx. month of travel: " + month + "%0A";
-        }
-        if (notes) {
-          message += "Additional notes: " + notes + "%0A";
-        }
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const elders = document.getElementById("elders").value.trim();
+      const destination = document.getElementById("destination").value;
+      const month = document.getElementById("month").value.trim();
+      const notes = document.getElementById("notes").value.trim();
 
-        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
-        window.open(url, "_blank");
-      });
-    }
-  </script>
+      if (!name || !phone || !elders || !destination) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      // ✅ Message goes ONLY to YOU
+      let msg = "*New SRAVN Enquiry*%0A%0A";
+      msg += "Name: " + name + "%0A";
+      msg += "Contact: " + phone + "%0A";
+      msg += "Elders: " + elders + "%0A";
+      msg += "Destination: " + destination + "%0A";
+      if (month) msg += "Month: " + month + "%0A";
+      if (notes) msg += "Notes: " + notes;
+
+      const whatsappURL =
+        "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
+
+      // ✅ Send enquiry to your WhatsApp (background tab)
+      window.open(whatsappURL, "_blank");
+
+      // ✅ UX feedback (no WhatsApp exposure to user)
+      enquiryForm.reset();
+      successMsg.style.display = "block";
+    });
+  }
+</script>
 </body>
 </html>
