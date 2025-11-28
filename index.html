@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SRAVN | Guided Tirth Yatra for Elders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="SRAVN offers guided Tirth Yatra experiences for elders with trained caretakers, end-to-end support, and compassionate companionship."
+  />
+  <style>
+    :root {
+      --primary: #185c65;
+      --primary-soft: #e6f2f3;
+      --accent: #f5a623;
+      --text: #222222;
+      --muted: #666666;
+      --bg: #f8fafb;
+      --white: #ffffff;
+      --radius-lg: 18px;
+      --radius-sm: 10px;
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 250, 251, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e4eaed;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffdf9a, #f5a623);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(24, 92, 101, 0.25);
+    }
+
+    .nav-cta:hover {
+      opacity: 0.95;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 40px 0 32px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-checklist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background: #fff;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-tag span {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid var(--primary);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(24, 92, 101, 0.3);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.96;
+    }
+
+    .btn-ghost {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #d3dde2;
+      background: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+    }
+
+    .btn-ghost span {
+      font-size: 16px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-note strong {
+      color: var(--primary);
+    }
+
+    .hero-card {
+      background: linear-gradient(140deg, #ffffff, #e7f4f6);
+      border-radius: 24px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .hero-card-main {
+      font-size: 13px;
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-badge-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(24, 92, 101, 0.09);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pill {
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: #fff;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .pill strong {
+      display: block;
+      font-size: 12px;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .hero-footer-strip {
+      margin-top: 4px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #ffffffbb;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hero-footer-strip span {
+      color: var(--muted);
+    }
+
+    .hero-footer-strip strong {
+      color: var(--primary);
+    }
+
+    .status-pill {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #e9f7ea;
+      color: #257a32;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 36px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+      font-size: 14px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .destination-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+      font-size: 13px;
+    }
+
+    .destination-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    .destination-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .destination-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #fff7e8;
+      color: #a96a00;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .step {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .step h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    .step p {
+      color: var(--muted);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .testimonial {
+      background: #fff;
+      padding: 14px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .testimonial-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      font-size: 13px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: var(--primary);
+    }
+
+    .faq-a {
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+      font-size: 14px;
+    }
+
+    .contact-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .contact-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    input,
+    select,
+    textarea {
+      border-radius: 10px;
+      border: 1px solid #d3dde2;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      background: #fdfefe;
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .contact-side {
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-pill {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    .contact-pill h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    .whatsapp-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: #1faf38;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    footer {
+      border-top: 1px solid #e4eaed;
+      padding: 14px 0 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 880px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        position: absolute;
+        inset: 54px 16px auto 16px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: var(--shadow-soft);
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-cta {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .grid-3,
+      .grid-4,
+      .steps,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      section {
+        padding: 28px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <div class="logo-mark">S</div>
+          SRAVN
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
+          ☰
+        </button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#why">Why SRAVN</a>
+          <a href="#destinations">Destinations</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact" class="nav-cta">Plan a Yatra</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            Guided Tirth Yatra for Elders
+          </div>
+
+          <h1>
+            Safe, caring
+            <span>Tirth Yatra experiences</span>
+            for your parents and elders.
+          </h1>
+
+          <p class="hero-sub">
+            SRAVN arranges end-to-end pilgrimage journeys with
+            <strong>trained caretakers</strong> who travel with your elders,
+            assist them at every step, and offer genuine companionship.
+          </p>
+
+          <div class="hero-checklist">
+            <div class="hero-tag">
+              <span></span> Trained sevaks for elders
+            </div>
+            <div class="hero-tag">
+              <span></span> Medical & mobility aware planning
+            </div>
+            <div class="hero-tag">
+              <span></span> Verified stays & local support
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#contact">
+              <button class="btn-primary">Plan a Yatra Call</button>
+            </a>
+            <a href="#destinations">
+              <button class="btn-ghost">
+                Explore destinations <span>➜</span>
+              </button>
+            </a>
+          </div>
+
+          <p class="hero-note">
+            <strong>Designed for peace of mind:</strong> You stay stress-free at
+            home while we travel with your loved ones.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Sample SRAVN Yatra plan">
+          <div class="hero-card-header">
+            <div class="hero-card-main">
+              <div class="hero-card-title">Puri – Jagannath Tirth Yatra</div>
+              <div class="hero-card-sub">
+                3-day guided journey for elders with door-to-door support.
+              </div>
+            </div>
+            <div class="hero-badge-pill">Sample Itinerary</div>
+          </div>
+
+          <div class="hero-card-grid">
+            <div class="pill">
+              <strong>Who we support</strong>
+              Age 60+ | BP | Diabetes | Mild mobility issues
+            </div>
+            <div class="pill">
+              <strong>What we handle</strong>
+              Train/flight, darshan queues, local travel, food, stay
+            </div>
+            <div class="pill">
+              <strong>With your elders</strong>
+              1 trained caretaker for 2–3 elders, full-time presence
+            </div>
+            <div class="pill">
+              <strong>Family updates</strong>
+              Daily photos, call summaries & health check-ins
+            </div>
+          </div>
+
+          <div class="hero-footer-strip">
+            <span>
+              Share your parents’ health & comfort needs – we customise every
+              Yatra.
+            </span>
+            <span class="status-pill">Limited slots / batch-wise</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">About SRAVN</div>
+          <h2 class="section-title">A Yatra company built only for elders</h2>
+          <p class="section-sub">
+            SRAVN is focused on one thing: giving elders a safe, dignified and
+            emotionally fulfilling Tirth Yatra, while families feel completely
+            assured about their comfort and safety.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="card-tag">Care + Travel</span>
+            <h3>Not a normal tour package</h3>
+            <p>
+              We design the journey around <strong>health, comfort and pace</strong>
+              of elders — shorter walking distances, adequate rest, easy access
+              to washrooms and minimal stairs wherever possible.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-tag">Companionship</span>
+            <h3>Trained caretakers as companions</h3>
+            <p>
+              Our caretakers assist with logistics and also act as
+              <strong>patient, respectful companions</strong> – talking,
+              listening and making sure your parents never feel alone.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-tag">Family peace of mind</span>
+            <h3>Transparent, connected experience</h3>
+            <p>
+              You get regular updates, photos and quick calls from the team so
+              you always know how the Yatra is going in real time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why SRAVN -->
+    <section id="why">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Why choose us</div>
+          <h2 class="section-title">What makes SRAVN different</h2>
+          <p class="section-sub">
+            A typical tour operator focuses on tickets and hotels. We focus on
+            elders’ real needs: health, emotions and dignity.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Elder-first planning</h3>
+            <p>
+              We ask in detail about medical history, mobility, food
+              preferences and comfort levels, and then design the Yatra around
+              that – not the other way round.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Trained “Sevak” style caretakers</h3>
+            <p>
+              Our caretakers are sensitised for elder needs – helping with
+              luggage, stairs, queues, seating and basic medication reminders
+              with empathy and patience.
+            </p>
+          </div>
+          <div class="card">
+            <h3>End-to-end coordination</h3>
+            <p>
+              From tickets to darshan slots, local transport, food and stay,
+              SRAVN acts as a single point of contact so you do not have to
+              coordinate with multiple vendors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations -->
+    <section id="destinations">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Destinations</div>
+          <h2 class="section-title">Popular SRAVN Yatra circuits</h2>
+          <p class="section-sub">
+            We currently focus on high-demand Tirth Yatra routes suitable for
+            elders. Each circuit is customisable as per health and comfort.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <div class="destination-card">
+            <div class="destination-name">Puri – Jagannath Dham</div>
+            <div class="destination-meta">3–4 days · Temple + Sea beach</div>
+            <div class="destination-badge">Good for first Yatra</div>
+          </div>
+
+          <div class="destination-card">
+            <div class="destination-name">Varanasi – Kashi Vishwanath</div>
+            <div class="destination-meta">3–5 days · Ganga aarti & temples</div>
+            <div class="destination-badge">Ganga Snan options</div>
+          </div>
+
+          <div class="destination-card">
+            <div class="destination-name">Haridwar & Rishikesh</div>
+            <div class="destination-meta">3–4 days · Ganga ghats</div>
+            <div class="destination-badge">Milder climate seasons</div>
+          </div>
+
+          <div class="destination-card">
+            <div class="destination-name">Custom Yatra</div>
+            <div class="destination-meta">
+              Mathura, Vrindavan, Ayodhya, Shirdi & more
+            </div>
+            <div class="destination-badge">Tell us your wish</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Process</div>
+          <h2 class="section-title">How SRAVN works</h2>
+          <p class="section-sub">
+            A simple, guided 4-step flow from enquiry to elders returning home
+            with a fulfilled heart and beautiful memories.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Share elder details</h3>
+            <p>
+              You tell us about your elders, preferred destination, month of
+              travel, health and comfort needs.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Get a customised plan</h3>
+            <p>
+              We prepare a tentative itinerary, budget and support plan
+              (caretakers, transport, stay) tailored for them.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Guided Yatra with caretakers</h3>
+            <p>
+              Our team travels with your elders, manages ground realities and
+              keeps you updated throughout the journey.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Memories & feedback</h3>
+            <p>
+              After the Yatra, we share photos and key moments, and capture
+              feedback to further improve future journeys.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Feedback</div>
+          <h2 class="section-title">Families who trusted SRAVN</h2>
+          <p class="section-sub">
+            These are representative examples. You can customise this section
+            with real stories and photos as your journeys grow.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <div class="testimonial-quote">
+              “My parents had been postponing their Puri visit for years. SRAVN
+              handled everything end-to-end and kept us informed the whole
+              time.”
+            </div>
+            <div class="testimonial-name">Daughter of 68 & 63 year-old elders</div>
+            <div class="testimonial-meta">Puri Yatra · 3 days</div>
+          </div>
+
+          <div class="testimonial">
+            <div class="testimonial-quote">
+              “The caretaker behaved like a family member. He walked slowly with
+              my father, found seating whenever needed and never rushed them.”
+            </div>
+            <div class="testimonial-name">Son of 72 year-old gentleman</div>
+            <div class="testimonial-meta">Varanasi Yatra · 4 days</div>
+          </div>
+
+          <div class="testimonial">
+            <div class="testimonial-quote">
+              “For us, peace of mind was everything. Daily photos and quick
+              calls made us feel like we were travelling with them.”
+            </div>
+            <div class="testimonial-name">Family from Bhubaneswar</div>
+            <div class="testimonial-meta">Haridwar & Rishikesh · 4 days</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">FAQ</div>
+          <h2 class="section-title">Frequently asked questions</h2>
+          <p class="section-sub">
+            A quick overview of common questions families ask before booking a
+            SRAVN Yatra.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">Is SRAVN a travel agency or a care service?</div>
+            <div class="faq-a">
+              SRAVN is a <strong>care-first Yatra service</strong>. We do handle
+              travel bookings, but our primary focus is elder comfort, safety
+              and companionship during the pilgrimage.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              Can you handle elders with BP / diabetes / other conditions?
+            </div>
+            <div class="faq-a">
+              We can support elders with common lifestyle conditions as long as
+              their doctor has allowed travel. We plan the Yatra with
+              <strong>slower pace, adequate rest</strong> and food options as
+              per guidance. We do not replace medical professionals.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              Do caretakers stay with elders throughout the trip?
+            </div>
+            <div class="faq-a">
+              Yes. Our caretakers are with them from start to end of the Yatra –
+              at stations, in vehicles, at temples and at the place of stay.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              How much time before the Yatra should we contact you?
+            </div>
+            <div class="faq-a">
+              Ideally <strong>3–4 weeks</strong> before travel for smoother
+              planning and better ticket options. For urgent cases, we can
+              check feasibility based on slots.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Enquiry</div>
+          <h2 class="section-title">Plan a call about your elders’ Yatra</h2>
+          <p class="section-sub">
+            Share basic details below and our team will reach out to understand
+            your needs and suggest the best Yatra options.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Tell us about your elders</h3>
+            <p>
+              This is a simple enquiry form. When submitted, it will open
+              WhatsApp with a pre-filled message containing these details.
+            </p>
+
+            <form id="enquiryForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="name">Your name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. Aniketh Sharma"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Your WhatsApp / phone number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+91-XXXXXXXXXX"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="elders">
+                    Elders travelling (age & any known conditions)
+                  </label>
+                  <input
+                    type="text"
+                    id="elders"
+                    name="elders"
+                    placeholder="e.g. Father 68 – BP, Mother 62 – diabetes"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="destination">Preferred destination</label>
+                  <select id="destination" name="destination" required>
+                    <option value="">Select</option>
+                    <option>Puri – Jagannath Dham</option>
+                    <option>Varanasi – Kashi Vishwanath</option>
+                    <option>Haridwar & Rishikesh</option>
+                    <option>Mathura / Vrindavan / Ayodhya</option>
+                    <option>Shirdi</option>
+                    <option>Not sure – need guidance</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="month">Approx. month of travel</label>
+                  <input
+                    type="text"
+                    id="month"
+                    name="month"
+                    placeholder="e.g. January, after Makar Sankranti"
+                  />
+                </div>
+
+                <div class="form-group full">
+                  <label for="notes">Anything else we should know?</label>
+                  <textarea
+                    id="notes"
+                    name="notes"
+                    placeholder="e.g. prefers light food, cannot climb many stairs, slow walker, etc."
+                  ></textarea>
+                </div>
+              </div>
+
+              <p class="form-note">
+                On submit, WhatsApp will open with all details in a message to SRAVN.
+              </p>
+
+              <button type="submit" class="btn-primary">
+                Submit enquiry on WhatsApp
+              </button>
+            </form>
+          </div>
+
+          <div class="contact-side">
+            <div class="contact-pill">
+              <h4>Quick WhatsApp connect</h4>
+              <p>
+                Prefer chatting directly? Start a WhatsApp conversation with
+                SRAVN to discuss your parents’ Yatra.
+              </p>
+
+              <a
+                class="whatsapp-cta"
+                id="whatsappQuickLink"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp SRAVN
+              </a>
+
+              <p class="form-note">
+                This button will automatically use the same WhatsApp number configured in the script.
+              </p>
+            </div>
+
+            <div class="contact-pill">
+              <h4>Ideal time to contact</h4>
+              <p>
+                9:00 AM – 8:00 PM IST <br />We respond to missed messages within
+                a working day for most enquiries.
+              </p>
+            </div>
+
+            <div class="contact-pill">
+              <h4>Custom & group Yatras</h4>
+              <p>
+                Planning a Yatra for a group of elders from the same colony /
+                organisation? We can design a <strong>special batch</strong>
+                with dedicated caretakers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© SRAVN – Guided Tirth Yatra for Elders</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#why">Why SRAVN</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#contact">Enquiry</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // === CONFIG: SET YOUR WHATSAPP NUMBER HERE (with country code, no + sign) ===
+    // Example: 919876543210
+    const WHATSAPP_NUMBER = "917008123502”;
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href").substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          navLinks.classList.remove("open");
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    // Set quick WhatsApp link based on configured number
+    const quickLink = document.getElementById("whatsappQuickLink");
+    if (quickLink && WHATSAPP_NUMBER && WHATSAPP_NUMBER !== "917008123502”) {
+      quickLink.href = "https://wa.me/" + WHATSAPP_NUMBER;
+    }
+
+    // Form -> WhatsApp integration
+    const enquiryForm = document.getElementById("enquiryForm");
+    if (enquiryForm) {
+      enquiryForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER === "917008123502") {
+          alert("Please configure your WhatsApp number in the script (WHATSAPP_NUMBER).");
+          return;
+        }
+
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const elders = document.getElementById("elders").value.trim();
+        const destination = document.getElementById("destination").value;
+        const month = document.getElementById("month").value.trim();
+        const notes = document.getElementById("notes").value.trim();
+
+        if (!name || !phone || !elders || !destination) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        let message = "SRAVN Yatra Enquiry%0A%0A";
+        message += "Name: " + name + "%0A";
+        message += "Contact number: " + phone + "%0A";
+        message += "Elders travelling: " + elders + "%0A";
+        message += "Preferred destination: " + destination + "%0A";
+        if (month) {
+          message += "Approx. month of travel: " + month + "%0A";
+        }
+        if (notes) {
+          message += "Additional notes: " + notes + "%0A";
+        }
+
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
+        window.open(url, "_blank");
+      });
+    }
+  </script>
+</body>
+</html>
